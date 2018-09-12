@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .box{
+        width:200px;
+        height:200px;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        /* border: 1px solid #778899; */
+    }
+    ul{
+        width:200px;
+        height:200px;
+        border-radius: 50%;
+        border:1px solid #778899;
+    }
+    li{
+        list-style: none;
+        width:2px;
+        height:5px;
+        background:#778899;
+        position: absolute;
+        transform-origin: 0 100px;/*???*/
+        left:50%;
+    }
+    li:nth-child(5n+1){
+        height:10px;
+    }
+    .box div{
+        position: absolute;
+        left:50%;
+        transform-origin: bottom;
+        transform: translateX(-50%);
+    }
+    .hour{
+        width:6px;
+        height:30px;
+        background-color: orange;
+        top:70px;
+    }
+    .min{
+        width:4px;
+        height:50px;
+        background-color: rosybrown;
+        top: 50px;
+    }
+    .sec{
+        width:2px;
+        height:60px;
+        background-color:pink;
+        top:40px;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul></ul>
+        <div class="hour"></div>
+        <div class="min"></div>
+        <div class="sec"></div>
+    </div>
+
+    <script>
+    var oUl=document.getElementsByTagName("ul")[0];
+    var oHour=document.getElementsByClassName("hour")[0];
+    var oMin=document.getElementsByClassName("min")[0];
+    var oSec=document.getElementsByClassName("sec")[0];
+    
+    var thisHtml="";
+    for(var i=0;i<60;i++){
+        thisHtml+="<li style='transform:rotate("+i*6+"deg)'></li>"/*括号的书写？如果要加上数字如何实现？*/
+    }
+    oUl.innerHTML=thisHtml;
+    
+    run();
+    function run(){
+        var myDate=new Date();
+        var hour=myDate.getHours();
+        var min=myDate.getMinutes();
+        var sec=myDate.getSeconds();
+        oHour.style.transform="rotate("+hour*30+"deg)";
+        oMin.style.transform="rotate("+min*6+"deg)";
+        oSec.style.transform="rotate("+sec*6+"deg)";
+    }
+    setInterval(function(){
+        run()
+    },1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        background-color: goldenrod;
+        perspective: 1000px;
+        perspective-origin: center center;
+    }
+   .box{
+        width:200px;
+        height:200px;
+        border: 1px dashed #666;
+        position: relative;
+        margin:100px auto;
+        transform-style: preserve-3d;
+        animation: run 3s linear infinite;
+    }
+    @keyframes run{
+        from{
+            transform:rotateY(0deg);
+        }
+        to{
+            transform: rotateY(360deg);
+        }
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        line-height: 200px;
+        text-align: center;
+        color: white;
+        background:rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+    }
+    li:nth-child(1){
+        transform: translateZ(100px);/*前面*/
+    }
+    li:nth-child(2){
+        transform: translateZ(-100px);/*后面*/
+    }
+    li:nth-child(3){
+        transform: rotateX(90deg) translateZ(-100px);/*上面*/
+    }
+    li:nth-child(4){
+        transform: rotateX(90deg) translateZ(100px);
+    }
+    li:nth-child(5){
+        transform: rotateY(90deg) translateZ(100px);
+    }
+    li:nth-child(6){
+        transform: rotateY(90deg) translateZ(-100px);
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+         <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+   
+</body>
+</html>
